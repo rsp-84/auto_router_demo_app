@@ -1,8 +1,11 @@
 import 'package:auto_route/auto_route.dart';
+import '../pages/email_page.dart';
+import '../pages/password_page.dart';
 import '../pages/book_details_page.dart';
 import '../pages/books_page.dart';
 import '../pages/home_page.dart';
 import '../pages/login_page.dart';
+import '../pages/login_wrapper_page.dart';
 
 /// This is the root router. It is the top-level router of the app and serves
 /// as the entry point of the app. Can use @AdaptiveAutoRouter, @MaterialAutoRouter
@@ -26,6 +29,15 @@ import '../pages/login_page.dart';
     //     AutoRoute(page: PasswordPage),
     //   ],
     // ),
+    AutoRoute(page: HomePage, initial: true),
+    AutoRoute(
+        path: "/login",
+        page: LoginWrapperPage,
+        name: 'LoginWrapperPage', // we'll get to this LoginWrapperPage next
+        children: [
+          AutoRoute(page: EmailPage, path: ''),
+          AutoRoute(page: PasswordPage, path: 'password'),
+        ]),
     CustomRoute(
       page: BooksPage,
       name: 'BooksRouter',
@@ -42,7 +54,6 @@ import '../pages/login_page.dart';
       path: '/login',
       transitionsBuilder: TransitionsBuilders.slideRight,
     ),
-    AutoRoute(page: HomePage, initial: true),
   ],
 )
 class $AppRouter {}

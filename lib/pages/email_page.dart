@@ -18,6 +18,16 @@ class EmailPage extends StatelessWidget {
                 style: TextStyle(fontSize: 30),
               ),
             ),
+            Center(
+              child: Container(
+                child: ElevatedButton(
+                  onPressed: () {
+                    print('pushed');
+                  },
+                  child: Text('Go to 3rd page'),
+                ),
+              ),
+            ),
           ],
         ),
       ),
